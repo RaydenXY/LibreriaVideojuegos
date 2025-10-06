@@ -19,11 +19,12 @@ if(!empty($_POST['email']) && !empty($_POST['userpass'])){
         if(password_verify($password, $user['password'])){
             // Login exitoso
             $_SESSION['loggedin'] = true;
+            $_SESSION['id'] = $user['id'];
             $_SESSION['firstname'] = $user['firstname'];
             $_SESSION['lastname'] = $user['lastname'];
             $_SESSION['email'] = $user['email'];
 
-            header("Location: welcome.php");
+            header("Location: FormularioVid.php");
             exit;
         } else {
             $_SESSION['login_error'] = "Contraseña incorrecta";
