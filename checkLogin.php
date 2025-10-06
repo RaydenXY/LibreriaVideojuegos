@@ -34,7 +34,7 @@ if(!empty($_POST['email']) && !empty($_POST['userpass'])){
 } else {
     $_SESSION['login_error'] = "Completa todos los campos";
 }
-//test
+
 // Si hay error, vuelve a login
 header("Location: login.php");
 exit;
