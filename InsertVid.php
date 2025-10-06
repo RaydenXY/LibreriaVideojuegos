@@ -46,7 +46,7 @@ if (!empty($_POST)) {
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO MyGuests (vidname, descrip, desarrollador, caratula, categoria, link)
+    $stmt = $conn->prepare("INSERT INTO videojuegos (vidname, descrip, desarrollador, caratula, categoria, link)
     VALUES (:vidname, :descrip, :desarrollador, :caratula, :categoria, :link)");
     $stmt->bindParam(':vidname', $_SESSION['vidname']);
     $stmt->bindParam(':descrip', $_SESSION['descrip']);
