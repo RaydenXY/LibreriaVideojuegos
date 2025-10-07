@@ -7,7 +7,7 @@ if(!empty($_POST['email']) && !empty($_POST['userpass'])){
     $email = $_POST['email'];
     $password = $_POST['userpass'];
 
-    // Buscar al usuario en la base de datos
+    
     $stmt = $conn->prepare("SELECT * FROM MyGuests WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
@@ -15,9 +15,9 @@ if(!empty($_POST['email']) && !empty($_POST['userpass'])){
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($user){
-        // Verifica la contraseña usando password_verify
+        
         if(password_verify($password, $user['password'])){
-            // Login exitoso
+            
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $user['id'];
             $_SESSION['firstname'] = $user['firstname'];
