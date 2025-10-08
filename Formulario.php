@@ -14,15 +14,37 @@ if (isset($_SESSION['error'])) {
 ?>
 
 <html>
+
 <head>
+    <script>
+        function checkPass(str) {
+            if (str.length == 0) {
+                document.getElementById("passHint").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("passHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "checkPass.php?q=" + encodeURIComponent(str), true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <form action="insertData.php" method="POST">
         Nombre: <input type="text" name="firstname" value="<?php echo $firstname ?>">
         Apellido: <input type="text" name="lastname" value="<?php echo $lastname ?>">
         Email: <input type="text" name="email" value="<?php echo $email ?>">
-        Contraseña: <input type="password" name="userpass" value="<?php echo $firstpass ?>">
+        Contraseña: <input type="password" id="userpass" name="userpass" onkeyup="checkPass(this.value)">
+        <div id="passHint"></div>
         RepContraseña: <input type="password" name="checkuserpass" value="<?php echo $secondpass ?>">
         <input type="submit" value="Registrar">
     </form>
