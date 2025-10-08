@@ -77,7 +77,9 @@ if (!empty($_POST)) {
     $stmt->bindParam(':user_id', $_SESSION['id']);
     $stmt->execute();
 
-    echo "New records created successfully";
+    $_SESSION['error'] = "Videojuego añadido correctamente.";
+    header("Location: ListaVid.php");
+    exit;
 
 }
 ?>

@@ -13,7 +13,7 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$id = (int) $_GET['id'];
+$id = $_GET['id'];
 
 $stmt = $conn->prepare("SELECT * FROM videojuegos WHERE id = :id");
 $stmt->bindParam(':id', $id);
@@ -26,7 +26,6 @@ if (!$videojuego) {
     exit;
 }
 ?>
-
 <html>
 <body>
     <?php

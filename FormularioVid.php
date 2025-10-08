@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require "conexion.php";
 $vidname = isset($_SESSION['vidname']) ? $_SESSION['vidname'] : '';
@@ -11,6 +12,7 @@ if(isset($_SESSION['error'])){
     echo "error" . $_SESSION['error'];
     $_SESSION['error'] = null;
 }
+
 ?>
 
 <html>
@@ -24,6 +26,8 @@ if(isset($_SESSION['error'])){
             categoría: <input type = "text" name= "categoria" value="<?php echo $categoria?>"><br><br>
             link: <input type = "text" name= "link" value="<?php echo $link?>"><br><br>
             <input type = "submit" value= "Registrar">
+            <br><br>
+            <a href="ListaVid.php">⬅ Volver a la lista de videojuegos</a>
         </form>
     </body>
 </html>

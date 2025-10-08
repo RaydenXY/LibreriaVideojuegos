@@ -23,5 +23,6 @@ if(isset($_SESSION['login_error'])){
         Contraseña: <input type="password" name="userpass" value=""><br>
         <input type="submit" value="Login">
     </form>
+    <p>¿No tienes cuenta? <a href="Formulario.php">Regístrate aquí</a></p>
 </body>
 </html>

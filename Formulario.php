@@ -20,7 +20,7 @@ if (isset($_SESSION['error'])) {
         Nombre: <input type="text" name="firstname" value="<?php echo $firstname ?>">
         Apellido: <input type="text" name="lastname" value="<?php echo $lastname ?>">
         Email: <input type="text" name="email" value="<?php echo $email ?>">
-        Contraseña: <input type="text" name="userpass" value="<?php echo $firstpass ?>">
+        Contraseña: <input type="password" name="userpass" value="<?php echo $firstpass ?>">
         RepContraseña: <input type="text" name="checkuserpass" value="<?php echo $secondpass ?>">
         <input type="submit" value="Registrar">
     </form>

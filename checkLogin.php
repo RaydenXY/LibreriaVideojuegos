@@ -24,7 +24,7 @@ if(!empty($_POST['email']) && !empty($_POST['userpass'])){
             $_SESSION['lastname'] = $user['lastname'];
             $_SESSION['email'] = $user['email'];
 
-            header("Location: FormularioVid.php");
+            header("Location: ListaVid.php");
             exit;
         } else {
             $_SESSION['login_error'] = "Contraseña incorrecta";

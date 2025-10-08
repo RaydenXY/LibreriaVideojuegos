@@ -2,20 +2,34 @@
 session_start();
 require "conexion.php";
 
+// Si no está logueado, redirigir al login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: login.php");
     exit;
 }
 
+// Obtenemos todos los videojuegos
 $stmt = $conn->prepare("SELECT * FROM videojuegos");
 $stmt->execute();
 $videojuegos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
+?>
 <html>
+
 <body>
+    <h1>Bienvenido, <?php echo $_SESSION['firstname']; ?>!</h1>
+    <p><a href="logout.php">Cerrar sesión</a></p>
+    <hr>
     <h1>Biblioteca de videojuegos</h1>
-    <p><a href="FormularioVid.php">Añadir nuevo videojuego</a></p>
+
+    <?php
+    if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
+        echo "<p style='color:red;'>" . $_SESSION['error'] . "</p>";
+        $_SESSION['error'] = null;
+    }
+    ?>
+
+    <p><a href="FormularioVid.php">➕ Añadir nuevo videojuego</a></p>
 
     <?php foreach ($videojuegos as $v): ?>
         <div style="margin-bottom:20px; border:1px solid #ccc; padding:10px; width:300px;">
@@ -26,4 +40,5 @@ $videojuegos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     <?php endforeach; ?>
 </body>
+
 </html>
