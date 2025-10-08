@@ -6,12 +6,17 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     exit;
 }
 
-
 $error = '';
 if(isset($_SESSION['login_error'])){
     $error = $_SESSION['login_error'];
     $_SESSION['login_error'] = null;
 }
+
+if (isset($_SESSION['error'])) {
+    echo "error" . $_SESSION['error'];
+    $_SESSION['error'] = null;
+}
+
 ?>
 
 <html>
