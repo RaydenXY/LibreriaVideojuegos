@@ -2,20 +2,20 @@
 session_start();
 require "conexion.php";
 
-// Si no está logueado, redirigir al login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: login.php");
     exit;
 }
 
-// Obtenemos todos los videojuegos
 $stmt = $conn->prepare("SELECT * FROM videojuegos");
 $stmt->execute();
 $videojuegos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <html>
-
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
     <h1>Bienvenido, <?php echo $_SESSION['firstname']; ?>!</h1>
     <p><a href="logout.php">Cerrar sesión</a></p>

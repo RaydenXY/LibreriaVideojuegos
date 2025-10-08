@@ -13,9 +13,8 @@ if (!isset($_POST['id'])) {
     exit;
 }
 
-$id = (int) $_POST['id'];
+$id = $_POST['id'];
 
-// Verificar propiedad
 $stmt = $conn->prepare("SELECT user_id, caratula FROM videojuegos WHERE id = :id");
 $stmt->bindParam(':id', $id);
 $stmt->execute();
@@ -33,12 +32,10 @@ if ($videojuego['user_id'] != $_SESSION['id']) {
     exit;
 }
 
-// --- ELIMINAR ARCHIVO DE IMAGEN (si no es default.jpg) ---
 if ($videojuego['caratula'] !== "uploads/default.jpg" && file_exists($videojuego['caratula'])) {
     unlink($videojuego['caratula']); // elimina el archivo del disco
 }
 
-// --- ELIMINAR REGISTRO ---
 $stmt = $conn->prepare("DELETE FROM videojuegos WHERE id = :id");
 $stmt->bindParam(':id', $id);
 $stmt->execute();

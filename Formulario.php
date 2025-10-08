@@ -14,7 +14,9 @@ if (isset($_SESSION['error'])) {
 ?>
 
 <html>
-
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
     <form action="insertData.php" method="POST">
         Nombre: <input type="text" name="firstname" value="<?php echo $firstname ?>">

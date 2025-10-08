@@ -16,6 +16,9 @@ if(isset($_SESSION['error'])){
 ?>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
     <body>
         <h1>Formulario de videojuegos</h1>
         <form action ="InsertVid.php" method="POST" enctype="multipart/form-data">

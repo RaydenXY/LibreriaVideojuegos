@@ -27,6 +27,9 @@ if (!$videojuego) {
 }
 ?>
 <html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
 <body>
     <?php
     if (isset($_SESSION['error'])) {

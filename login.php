@@ -15,6 +15,9 @@ if(isset($_SESSION['login_error'])){
 ?>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
 <body>
     <h2>Login</h2>
     <?php if($error) echo "<p style='color:red;'>$error</p>"; ?>

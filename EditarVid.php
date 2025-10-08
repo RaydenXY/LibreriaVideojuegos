@@ -95,6 +95,9 @@ if (!empty($_POST)) {
 ?>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
 <body>
     <?php
     if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
