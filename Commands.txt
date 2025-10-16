@@ -1,0 +1,47 @@
+alumno@MV-W10 MINGW64 /c/xampp/htdocs/Test/Actividad5 (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   InsertData.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Livesearch.php
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+alumno@MV-W10 MINGW64 /c/xampp/htdocs/Test/Actividad5 (main)
+$ git remote v
+error: unknown subcommand: `v'
+usage: git remote [-v | --verbose]
+   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>
+   or: git remote rename [--[no-]progress] <old> <new>
+   or: git remote remove <name>
+   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
+   or: git remote [-v | --verbose] show [-n] <name>
+   or: git remote prune [-n | --dry-run] <name>
+   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]
+   or: git remote set-branches [--add] <name> <branch>...
+   or: git remote get-url [--push] [--all] <name>
+   or: git remote set-url [--push] <name> <newurl> [<oldurl>]
+   or: git remote set-url --add <name> <newurl>
+   or: git remote set-url --delete <name> <url>
+
+    -v, --[no-]verbose    be verbose; must be placed before a subcommand
+
+
+alumno@MV-W10 MINGW64 /c/xampp/htdocs/Test/Actividad5 (main)
+$ git remote -v
+origin  https://github.com/RaydenXY/LibreriaVideojuegos (fetch)
+origin  https://github.com/RaydenXY/LibreriaVideojuegos (push)
+
+alumno@MV-W10 MINGW64 /c/xampp/htdocs/Test/Actividad5 (main)
+$ git remote set-url origin https://github.com/DanielBFiel13/LibreriaVideojuegos.git
+
+alumno@MV-W10 MINGW64 /c/xampp/htdocs/Test/Actividad5 (main)
+$ git remote -v
+origin  https://github.com/DanielBFiel13/LibreriaVideojuegos.git (fetch)

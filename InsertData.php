@@ -10,7 +10,7 @@ if (!empty($_POST)) {
   $_SESSION['userpass'] = $_POST['userpass'];
   $_SESSION['checkuserpass'] = $_POST['checkuserpass'];
 
-  $email =$_SESSION['email'];
+  $email = $_SESSION['email'];
 
   $stmt = $conn->prepare("SELECT email FROM myguests WHERE email = :email");
   $stmt->bindParam(':email', $email);
@@ -20,7 +20,7 @@ if (!empty($_POST)) {
   if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'El email es invalido';
     $_SESSION['email'] = '';
-  }else if($guest){
+  } else if ($guest) {
     $_SESSION['error'] = 'El email ya está registrado';
     $_SESSION['email'] = '';
   }
@@ -29,7 +29,7 @@ if (!empty($_POST)) {
     $_SESSION['error'] .= ' Las contraseñas no coinciden';
     $_SESSION['userpass'] = '';
     $_SESSION['checkuserpass'] = '';
-  } else if(!preg_match("/^.{8,}$/", $_SESSION['userpass'])){
+  } else if (!preg_match("/^.{8,}$/", $_SESSION['userpass'])) {
     $_SESSION['error'] .= ' La contraseña debe tener 8 caracteres como mínimo';
     $_SESSION['userpass'] = '';
     $_SESSION['checkuserpass'] = '';
