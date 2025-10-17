@@ -39,7 +39,7 @@ if (isset($_SESSION['error'])) {
 </head>
 
 <body>
-    <form action="insertData.php" method="POST">
+    <form action="insertData.php" method="POST" enctype="multipart/form-data">
         Nombre: <input type="text" name="firstname" value="<?php echo $firstname ?>">
         Apellido: <input type="text" name="lastname" value="<?php echo $lastname ?>">
         Email: <input type="text" name="email" value="<?php echo $email ?>">
@@ -47,6 +47,7 @@ if (isset($_SESSION['error'])) {
         <div id="passHint"></div>
         RepContraseña: <input type="password" name="checkuserpass" value="<?php echo $secondpass ?>">
         <input type="submit" value="Registrar">
+        Imagen de usuario: <input type = "file" name= "foto"><br><br>
     </form>
 
     <br>

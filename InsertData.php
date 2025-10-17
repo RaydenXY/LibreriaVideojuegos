@@ -33,10 +33,10 @@ if (!empty($_POST)) {
     $_SESSION['error'] .= ' La contraseña debe tener 8 caracteres como mínimo';
     $_SESSION['userpass'] = '';
     $_SESSION['checkuserpass'] = '';
-  } else if (!preg_match("/^(?=.*[a-z])$/", $_SESSION['userpass'])) {
+  } else if (!preg_match("/[a-z]/", $_SESSION['userpass'])) {
     $_SESSION['error'] .= ' La contraseña debe tener al menos una letra minúscula';
     $_SESSION['userpass'] = '';
-  } else if (!preg_match("/^(?=.*[A-Z])$/", $_SESSION['userpass'])) {
+  } else if (!preg_match("/[A-Z]/", $_SESSION['userpass'])) {
     $_SESSION['error'] .= ' La contraseña debe tener al menos una letra mayúscula';
     $_SESSION['userpass'] = '';
   } else {
@@ -58,12 +58,36 @@ if (!empty($_POST)) {
     exit;
   }
 
-  $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, password)
-    VALUES (:firstname, :lastname, :email, :password)");
+  $carpeta = "uploads/";
+  $ruta_archivo = "";
+
+  if (!empty($_FILES['foto']['name'])) {
+
+    $nombre_tmp = $_FILES['foto']['tmp_name'];
+    $nombre_original = $_FILES['foto']['name'];
+
+    $tipo = mime_content_type($nombre_tmp);
+
+    if (in_array($tipo, ['image/jpeg', 'image/png'])) {
+      $nombre_archivo = time() . "_" . basename($nombre_original);
+      $ruta_archivo = $carpeta . $nombre_archivo;
+      move_uploaded_file($nombre_tmp, $ruta_archivo);
+    } else {
+      $_SESSION['error'] .= 'Formato de imagen no permitido (solo JPG o PNG). ';
+      $_SESSION['foto'] = '';
+    }
+  } else {
+
+    $ruta_archivo = $carpeta . "defaultUser.jpg";
+  }
+
+  $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email, password, foto)
+    VALUES (:firstname, :lastname, :email, :password, :foto)");
   $stmt->bindParam(':firstname', $_SESSION['firstname']);
   $stmt->bindParam(':lastname', $_SESSION['lastname']);
   $stmt->bindParam(':email', $_SESSION['email']);
   $stmt->bindParam(':password', $hash);
+  $stmt->bindParam(':foto', $ruta_archivo);
   $stmt->execute();
 
   $_SESSION['error'] = "Usuario registrado correctamente. Inicia sesión.";
