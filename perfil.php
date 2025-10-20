@@ -28,9 +28,10 @@ $fotoPerfil = !empty($myguests['foto']) ? $myguests['foto'] : 'defaultUser.jpg';
     <nav>
         <div class="nav-left">
             <a href="FormularioVid.php">Añadir nuevo videojuego</a>
+            <a href="estadisticas.php">Estadísticas</a>
         </div>
         <div class="nav-right">
-            <a href="perfil.php">Editar perfil</a>
+            <a href="ListaVid.php">Volver a la lista</a>
             <a href="logout.php">Cerrar sesión</a>
             <img src="<?php echo $fotoPerfil; ?>" alt="Foto de perfil" class="perfil-img">
         </div>

@@ -44,6 +44,24 @@ if (isset($_SESSION['id'])) {
     <p></p>
     <hr>
     <h1>Biblioteca de videojuegos</h1>
+    <div class="container">
+        <input type="text" id="busqueda" placeholder="Buscar videojuegos..." onkeyup="buscar(this.value)">
+        <div id="resultados"></div>
+    </div>
+
+    <script>
+        function buscar(texto) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "buscar.php?q=" + texto, true);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("resultados").innerHTML = this.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+
     <?php
     if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
         echo "<p style='color:red;'>" . $_SESSION['error'] . "</p>";

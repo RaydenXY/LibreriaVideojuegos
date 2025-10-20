@@ -9,7 +9,7 @@ if (!empty($_POST)) {
     $_SESSION['desarrollador'] = $_POST['desarrollador'];
     $_SESSION['categoria'] = $_POST['categoria'];
     $_SESSION['link'] = $_POST['link'];
-    $_SESSION['error'] = '';    
+    $_SESSION['error'] = '';
 
     if (empty($_SESSION['vidname'])) {
         $_SESSION['error'] .= ' El título no puede estar vacío.';
@@ -27,7 +27,7 @@ if (!empty($_POST)) {
         $_SESSION['error'] .= ' Debes indicar una categoría.';
     }
 
-    
+
     if (!filter_var($_SESSION['link'], FILTER_VALIDATE_URL)) {
         $_SESSION['error'] .= ' El enlace no tiene un formato válido.';
     }
@@ -71,9 +71,16 @@ if (!empty($_POST)) {
     $stmt->bindParam(':user_id', $_SESSION['id']);
     $stmt->execute();
 
+    $id_videojuego = $conn->lastInsertId();
+
+    $stmt = $conn->prepare("INSERT INTO estadisticas (videojuego_id, visualizaciones, voto_positivo, voto_negativo)
+                        VALUES (:videojuego_id, 0, 0, 0)");
+    $stmt->bindParam(':videojuego_id', $id_videojuego);
+    $stmt->execute();
+
     $_SESSION['error'] = "Videojuego añadido correctamente.";
     header("Location: ListaVid.php");
     exit;
-
+    
 }
 ?>
