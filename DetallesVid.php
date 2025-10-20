@@ -55,6 +55,7 @@ if (!$videojuego) {
             <input type="hidden" name="id" value="<?php echo $videojuego['id']; ?>">
             <input type="submit" value="Editar">
         </form>
+        <p><a href="perfil.php">Ir a tu perfil</a></p>
     <?php endif; ?>
 
     <p><a href="ListaVid.php">⬅ Volver a la lista</a></p>
