@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "conexion.php";
 
 if (isset($_COOKIE['token'])) {
     $token = $_COOKIE['token'];
@@ -8,7 +9,7 @@ if (isset($_COOKIE['token'])) {
     $stmt->bindParam(':token', $token);
     $stmt->execute();
 
-    // Eliminar la cookie
+    
     setcookie("token", "", time() - 3600, "/");
 }
 
