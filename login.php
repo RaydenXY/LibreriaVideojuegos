@@ -25,7 +25,7 @@ if (isset($_COOKIE['token'])) {
         $_SESSION['lastname'] = $datos['lastname'];
         $_SESSION['email'] = $datos['email'];
 
-        header("Location: FormularioVid.php");
+        header("Location: ListaVid.php");
         exit;
     }
 }
